@@ -22,15 +22,19 @@ function dragStop() {
 }
 
 // boxes drop
-function dragOver() {
+function dragOver(e) {
+    e.preventDefault()
     
 }
 function dragEnter(e) {
     e.preventDefault()
+    this.className += " hovered"
 }
-function dragLeave(e) {
-    e.preventDefault()
+function dragLeave() {
+    this.className += "box"
+    
 }
 function dragDrop() {
-    console.log("drag drop")
+    this.className = "box"
+    this.append(fill)
 }
