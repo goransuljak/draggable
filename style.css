@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: steelblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+}
+@media (max-width: 800px) {
+  body {
+    flex-direction: column;
+  }
+}
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  margin: 10px;
+}
+.fill {
+  height: 100px;
+  width: 100px;
+  background-color: black;
+}
+.hovered {
+  background-color: yellow;
+}
+.hold {
+  border: 5px solid white;
+  background-color: red;
+}
