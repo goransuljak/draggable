@@ -1,17 +1,40 @@
-const codes = document.querySelectorAll(".code")
+const boxes = document.querySelectorAll(".box")
+const fill = document.querySelector(".fill")
+
+fill.addEventListener("dragstart", dragStart)
+fill.addEventListener("dragend", dragStop)
+
+for(const box of boxes) {
+    box.addEventListener("dragover", dragOver)
+    box.addEventListener("dragenter", dragEnter)
+    box.addEventListener("dragleave", dragLeave)
+    box.addEventListener("drop", dragDrop)
+}
 
 
-codes[0].focus()
+// fill start leave
+function dragStart() {
+    this.className += " hold";
+    setTimeout(() => this.className = " invisible", 0)
+}
+function dragStop() {
+    this.className = "fill"
+}
 
-
-codes.forEach((code, idx) => {
-    code.addEventListener("keydown", (e) => {
-        if(e.key >= 0 && e.key <=9) {
-            codes[idx].value = ""
-            setTimeout(() => codes[idx + 1].focus(), 10) 
-        } else if(e.key === "Backspace") {
-            setTimeout(() => codes[idx - 1].focus(), 10) 
-
-        }
-    })
-})
+// boxes drop
+function dragOver(e) {
+    e.preventDefault()
+    
+}
+function dragEnter(e) {
+    e.preventDefault()
+    this.className += " hovered"
+}
+function dragLeave() {
+    this.className += "box"
+    
+}
+function dragDrop() {
+    this.className = "box"
+    this.append(fill)
+}
